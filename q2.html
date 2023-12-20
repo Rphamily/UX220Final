@@ -2,32 +2,57 @@
 <html lang="en">
 
 <head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cedarville+Cursive&display=swap" rel="stylesheet">
+    
     <style>
+
+        #question {
+            margin-top: 10px;
+        }
+
+        #answer {
+            color: red;
+            font-family: 'Cedarville Cursive', cursive;
+            line-height: 2;
+        }
+
+        #prompt {
+            color: #aaa;
+        }
     </style>
 </head>
 
 <body>
     <h1>The magic 8 ball</h1>
+    <label id="prompt">Ask me anything</label><br />
     <input /><br />
     <x-magic />
     <script>
-        class Magic8Ball extends HTMLElement{
-            connectedCallback(){
-                this.innerHTML = 
-`
-    <button id="question">Ask</button>
-    <p id="answer"></p>
-`
+        class Magic8Ball extends HTMLElement {
+            connectedCallback() {
+                this.innerHTML =
+                `
+                <button id="question">Ask</button>
+                <p id="answer"></p>
+                `;
+    
                 this.button = document.querySelector("#question");
-                this.button.addEventListener("click", ()=>{
-                    const answer = document.querySelector("#answer");
-                    const aAnswers=["yes", "definitely", "no"];
+                this.prompt = document.querySelector("#prompt");
+                this.answer = document.querySelector("#answer");
+    
+                this.button.addEventListener("click", () => {
+                    const aAnswers = ["yes", "definitely", "no"];
                     const nAnswer = Math.floor(Math.random() * aAnswers.length);
-                    answer.innerHTML = aAnswers[nAnswer];
-                })
+                    this.answer.innerHTML = aAnswers[nAnswer];
+                    this.answer.style.color = "red"; 
+                    this.answer.style.fontFamily = "'Cedarville Cursive', cursive"; 
+                    this.prompt.style.display = "none";
+                });
             }
         }
-
+    
         customElements.define("x-magic", Magic8Ball);
     </script>
 </body>
