@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Where in the World is Kunal</title>
+</head>
+
+<body>
+
+    <!-- Information about the document -->
+    <section>
+        <h2>Document Information</h2>
+        <p>This document describes the whereabouts of Ryan.</p>
+        <p>The viewport is scaled for mobile devices with the following meta tag:</p>
+        <code>&lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;</code>
+    </section>
+
+    <!-- Content of the document -->
+    <main>
+        <h1>Where in the World is Ryan</h1>
+        <p>Ryan was here</p>
+    </main>
+
+    <!-- HTML 5 semantic tag with copyright notice -->
+    <footer>
+        <small>&copy; <x-current-year></x-current-year> Where in the World is Ryan. All rights reserved.</small>
+    </footer>
+
+    <!-- Custom Element for the current year -->
+    <script>
+        class CurrentYear extends HTMLElement {
+            connectedCallback() {
+                this.textContent = new Date().getFullYear();
+            }
+        }
+
+        customElements.define("x-current-year", CurrentYear);
+    </script>
+
+</body>
+
+</html>
